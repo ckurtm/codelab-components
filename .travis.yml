@@ -1,0 +1,14 @@
+sudo: false
+node:
+  - '0.12'
+env:
+  global:
+    - secure: Io7OQN1j4S68KdDdFtqYJUu1mic9NBYBXpApaEX/dWbbZWtU9LQvFBuAhWtluBbWkmwjp2kOVJCX0cCp+k+XpK4IvTR3I4j46h9swrCzN+StZEHOFjzn3pMG8BkLvG/pjGPzoJn4XcnOWh2TeB4EiH96KkqLjYbffy7LMOWIX/GGBOsO64A3gsdLofDsvFIL91BjOZUM6tSBK4uzXxrlFeqp77C23R8mYgAIIPeMCN1fwQM67DramnSYsG4w8Ovf2WpA4uMAC16fKCUGyxite+RS0OYSwQWpnkXLqanWMH5M88mQ5M13uTY+lRGzv9WrKU+GNL0R4HyXVjJIYIVlt4F3pe+bNXRf8pXIDlw7B8c7qD+3rVRtcwrvpyq5++TnrcANJ2tnhHAl++BDdOi4yfObI6PC9eD3IRnrh//3z+uEJeHeZWKvHDc4VQQ+LK/+wSk8L09ODqtBjcjIzu1x9isPq9hBkwiMARvYAQkxVAPH7M9kIXjKxifFhubt8xL1kCnRjfWSPQ0VJ5XXiq5EkQmxMVCLHqDQ5XdWri0tbmGjH6hkHVdMIJsoR0CqRyJ/Z5YaLUg5AZryplOReNvQr/ZB7U5cZ8wCsSGN/MYaS0QkiHua0u5z1IhYO5JJzHD+96BCD4yo/B4e+uLfV0Zxnx/Pwljd7sFNXH7dadC0UdM=
+    - secure: VeoNAvMK7OxnPp+bHg8QkURyCR3C7EECdaNSlJmo4Cg+/X6ooY6v1F0+bj7olzu16OZNDfJFbijm0hvI6L17LitdCXNDTmE/gIk8kxxZvBvBt/SxYPNJ5cH2FchyURuM3EPYIk+hvcGt8MVsnBSAOOWHeoDa00SYFUQEvg6yhPMl6rLU9/MBi+vI5yxrH3SED3yOS6v542c4+gQ6ar46TMXFEfrtHmufe9Gxnbu3SIMocCPNzYxsoo6dELjX+kd+RY9E3ZekEZJZzMQMRVxfRK0HC7P9NesvdtgGXnhkwtiK7yPwCFK68QrC4a8Nq2kJpTqwVdV2LncUpZG9xV8y/AQDGb1rf7gyIeuPwdsrTy2M2qG4QJ/b9LzrftUott39y14q41Cm7odmBnPQiqOlIrDAlqJ9K6U4zTpvOtFJ1y7K3F8Arkkv/IpePaW60wbM7w22pywdcrUNIFLe5yQJ0SkRrwaVFsfcvH5orAO2sEv3zvK+Bp7Rk3JOd7Ka0nDKhg3h8fhEkYi9dqeisjM/0B+YtMsqfOrbwzs/TttdlqTV7ic+rBZ5/0Vk+a0Tw62dq9cRE6Dvo/pHC79/L2G5Y+rP1hEpNrZx/uEBWTdk/8PELnL0UkdjgWorVD6Eok+VP70I4qPgZT8agkjEyAcXwRQFSDp4zCbu2UjXebT6cRk=
+addons:
+  sauce_connect: true
+install:
+  - npm install -g bower web-component-tester
+  - bower install
+script:
+  - wct --skip-update-check --simpleOutput --skip-plugin local --sauce-tunnel-id $TRAVIS_JOB_NUMBER --sauce Linux/chrome
