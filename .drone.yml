@@ -1,0 +1,11 @@
+image: crhym3/ci-image
+env:
+  - CHROME=https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  - DISPLAY=:99
+script:
+  # install deps and setup env for tests
+  - curl -sSLo chrome.deb $CHROME && dpkg -i chrome.deb
+  - npm install web-component-tester
+  - Xvfb $DISPLAY &
+  - bower install --allow-root
+  - ./node_modules/web-component-tester/bin/wct
